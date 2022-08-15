@@ -157,6 +157,7 @@ function AmqpAck(n) {
   node.ioType = n.iotype;
   node.ioName = n.ioname;
   node.nack = n.nack;
+  node.reject = n.reject
   node.server = RED.nodes.getNode(n.server);
 
   // set amqp node type initialization parameters
@@ -172,10 +173,14 @@ function AmqpAck(n) {
         var amqpfindack = localamqpobjectsacks.get(msg.amqpfields.deliveryTag);
         if (amqpfindack) {
           try {
-            if (!node.nack) {
-              amqpfindack.ack();
+            if(node.reject) {
+              amqpfindack.reject();
             } else {
-              amqpfindack.nack();
+              if (!node.nack) {
+                amqpfindack.ack();
+              } else {
+                amqpfindack.nack();
+              }
             }
           } catch (e) {
             if (e.message === "Channel closed" && !node.reconnection) {

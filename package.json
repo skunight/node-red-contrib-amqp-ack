@@ -24,9 +24,9 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/elgranloky/node-red-contrib-amqp-ack"
+    "url": "https://github.com/skunight/node-red-contrib-amqp-ack"
   },
-  "homepage": "https://github.com/elgranloky/node-red-contrib-amqp-ack#readme",
+  "homepage": "https://github.com/skunight/node-red-contrib-amqp-ack#readme",
   "dependencies": {
     "amqp-ts": "^1.8.0",
     "getos": "^3.2.1"
